@@ -65,5 +65,5 @@ colnames(mean_std_data) <- sub("bodybody", "body", colnames(mean_std_data))
 data_summary <- mean_std_data %>% group_by(activitylabel, subject) %>% summarise_each(funs(mean))
 
 #write out the summary data
-write.csv(data_summary, "data_summary.csv")
-names(mean_std_data)
+write.table(data_summary, "data_summary.txt", row.names = FALSE)
+
