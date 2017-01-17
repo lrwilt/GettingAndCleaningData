@@ -9,22 +9,43 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Intro
+Variables were named base on the features selected by the Human Activity Recognition Using Smartphones Dataset. Below is an excerpt of the features_info.txt
+document provided with the data. Feature names have been modified to read as the variables used in run_analyis.R and only the inscope set variables that
+were estimated from the signals are included.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+##Feature Selection 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
-```{r cars}
-summary(cars)
-```
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
 
-## Including Plots
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
 
-You can also embed plots, for example:
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+timebodyaccelerometer-XYZ  
+timegravityaccelerometer-XYZ  
+timebodyaccelerometerjerk-XYZ  
+timebodygyroscope-XYZ  
+timebodygyroscopejerk-XYZ  
+timebodyaccelerometermagnitude  
+timegravityaccelerometermagnitude  
+timebodyaccelerometerjerkmagnitude  
+timebodygyroscopemagnitude  
+timebodygyroscopejerkmagnitude  
+freqbodyaccelerometer-XYZ  
+freqbodyaccelerometerjerk-XYZ  
+freqbodygyroscope-XYZ  
+freqbodyaccelerometermagnitude  
+freqbodyaccelerometerjerkmagnitude  
+freqbodygyroscopemagnitude  
+freqbodygyroscopejerkmagnitude  
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The set of variables that were estimated from these signals are: 
+
+mean(): Mean value  
+std(): Standard deviation  
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency  
+
